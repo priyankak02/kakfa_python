@@ -10,9 +10,9 @@ consumer = KafkaConsumer('test-csv',bootstrap_servers=['localhost:9092'])
         print(m.value," ",m.timestamp)  '''
 
 
-if os.path.isfile('message.csv'):
-        print("message.csv already exists ... \n deleting ..")
-        os.remove('message.csv')
+if os.path.isfile('messages.csv'):
+        print("messages.csv already exists ... \n deleting ..")
+        os.remove('messages.csv')
 
 with open('messages.csv', 'a') as f:
     fWriter = csv.writer(f)
