@@ -15,9 +15,9 @@ Step 0 : Update your Operating system
 
 sudo apt update
 
-NOTE : If you get the error ìUpdates for this repository will not be applied.î Use the following command
+NOTE : If you get the error ‚ÄúUpdates for this repository will not be applied.‚Äù Use the following command
 
-sudo hwclock ñhctosys
+sudo hwclock ‚Äìhctosys
 
 Step 1 : Installing Java JDK 11
 
@@ -46,7 +46,7 @@ Upon completion, you should get a similar output when doing java -version:
 
 Step 2: Download the latest version of Apache Kafka from https://kafka.apache.org/downloads under Binary downloads.
 
-
+  
 Alternatively use this command using wget
 
 
@@ -95,7 +95,7 @@ PATH="$PATH:~/kafka/bin"
 This ensures that you can now run the kafka commands without prefixing them.
 
 After reloading your shell, the following should work from any directory
-For shell reloading ñ
+For shell reloading ‚Äì
 Close terminal and open it again    OR
 Execute command bash    OR
 Execute command source ~/.bashrc
@@ -109,21 +109,21 @@ Type srvr to check
 To check which brokers are connected to Zookeeper
 
 zookeeper-shell.sh localhost:2181 ls /brokers/ids
+ 
 
 
 
+Lab 2 : Kafka CLI ‚Äì Single Producer and Consumer (Single Node Cluster)
 
-Lab 2 : Kafka CLI ñ Single Producer and Consumer (Single Node Cluster)
-
-1. Checking Kafka Version 
+1.	Checking Kafka Version 
 kafka-topics.sh --version
 
-2. Creating a Kafka topic
+2.	Creating a Kafka topic
 
 
-- Creating the Kafka topic quickstart-events when my Kafka broker is running at localhost:9092
+-	Creating the Kafka topic quickstart-events when my Kafka broker is running at localhost:9092
 
-- Use the kafka-topics.sh CLI with the --create option
+-	Use the kafka-topics.sh CLI with the --create option
 
 
 kafka-topics.sh --create --topic quickstart-events -- bootstrap-server localhost:9092
@@ -137,9 +137,9 @@ Warning: You shouldn't mix underscores and periods in topic name. To avoid issue
 
 To list Kafka topics, we need to provide the mandatory parameters:
 
-- The Kafka hostname and port e.g., localhost:9092
+-	The Kafka hostname and port e.g., localhost:9092
 
-- Use the kafka-topics.sh CLI with the --list option
+-	Use the kafka-topics.sh CLI with the --list option
 
 kafka-topics.sh --bootstrap-server localhost:9092 --list 4. Describing the topic
 
@@ -155,7 +155,7 @@ kafka-console-consumer.sh --topic quickstart-events --from-beginning -- bootstra
 
 7.  Deleting the topic
 
-kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic quickstart-events
+kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic quickstart-events 
 
 
 
@@ -164,7 +164,7 @@ Task : Create a text file having 3 sentences and produce messages to the topic f
 Hint : Use < filename.txt at the end of CLI producer command
 
 
-Lab  ñ Producing/consuming messages in key-value pair format
+Lab  ‚Äì Producing/consuming messages in key-value pair format
 
 1.  Create a new topic
 
@@ -182,7 +182,7 @@ kafka-console-consumer.sh --topic key-value --property print.key=true --property
 
 kafka-console-consumer.sh --topic key-value --property print.key=true --property key.separator=',' --property print.timestamp=true --from-beginning --bootstrap-server localhost:9092
 
-Lab 3 ñ Multiple Producer and Multiple Consumer in a Kafka Topic
+Lab 3 ‚Äì Multiple Producer and Multiple Consumer in a Kafka Topic
 
 Task 3.1 : Create a Single Producer and Multiple Consumer
 
@@ -200,11 +200,11 @@ kafka-console-consumer.sh --topic lab3 --from-beginning --bootstrap-server local
 
 Observations:
 
-1. Kafka cluster stores messages even if they are already consumed by one of its consumers
+1.	Kafka cluster stores messages even if they are already consumed by one of its consumers
 
-2. Same messages can be read multiple times by different consumers
+2.	Same messages can be read multiple times by different consumers
 
-3. Multiple consumers can read Kafka topic in parallel
+3.	Multiple consumers can read Kafka topic in parallel
 
 Task 3.2 : Create Multiple Producer and Multiple Consumer
 
@@ -216,7 +216,7 @@ Observations :
 
 
 Lab 4 : Installing Python Client for Apache Kafka and running a simple program on Single Node Cluster
-
+ 
 
 
 Step 1: Install Python Client for Apache Kafka
@@ -269,9 +269,9 @@ python3 consumer_csv.py
 
 Observations :
 
-1. CSV file named messages is created for storing data
+1.	CSV file named messages is created for storing data
 
-2. The data produced from a producer is written to a csv file after consumed from Apache Kafka Broker
+2.	The data produced from a producer is written to a csv file after consumed from Apache Kafka Broker
 
 
 
@@ -305,28 +305,28 @@ python3 consumer_faker.py
 
 Observations :
 
-1. Faker produces data with following keys:
+1.	Faker produces data with following keys:
 
-a. Name
+a.	Name
 
-b. Address
+b.	Address
 
-c. Year
+c.	Year
 
-2. The data produced from a producer is shown on the consumer file
+2.	The data produced from a producer is shown on the consumer file
 
 Lab 7 : Orders
 
 Run 4 files from Orders_Kafka Folder
 
-ï order_details.py ( Producer )
+‚Ä¢	order_details.py ( Producer )
 
-ï transaction.py(Consumer + Producer)
+‚Ä¢	transaction.py(Consumer + Producer)
 
-ï analytics.py (Consumer)
+‚Ä¢	analytics.py (Consumer)
 
-ï email.py(Consumer)
-
+‚Ä¢	email.py(Consumer)
+  
 
 
 Lab 8 : Partitions and Offsets in Apache Kafka
@@ -360,13 +360,13 @@ kafka-console-consumer.sh --topic lab8 --from-beginning --bootstrap-server local
 
 Also check the logs for understanding the values of every partition Try the following : Give offset with from beginning
 
-kafka-console-consumer.sh --topic lab8 --from-beginning --bootstrap-server localhost:9092 --partition 0 ñ-offset 2
+kafka-console-consumer.sh --topic lab8 --from-beginning --bootstrap-server localhost:9092 --partition 0 ‚Äì-offset 2
 
 
 
-Logically, you should use, using ñfrom-beginning and offset together doesnít make sense
+Logically, you should use, using ‚Äìfrom-beginning and offset together doesn‚Äôt make sense 
 
-kafka-console-consumer.sh --topic lab8 --bootstrap-server localhost:9092 -- partition 0 ñ-offset 2
+kafka-console-consumer.sh --topic lab8 --bootstrap-server localhost:9092 -- partition 0 ‚Äì-offset 2
 
 Try giving offset without partition
 
@@ -396,7 +396,7 @@ Get Producer python code from given folder
 
 cd kafka_python/partition_producer_kafka/
 
-1. Partitioning using partition argument
+1.	Partitioning using partition argument
 
 Create a topic named test1 with 3 partitions
 
@@ -412,7 +412,7 @@ Note : The json.dumps() method encodes any Python object into JSON formatted Str
 	For consuming data, python code can also be written
 
 
-2. Partitioning using key
+2.	Partitioning using key
 
 Create a topic named test2 with 3 partitions
 
@@ -428,9 +428,9 @@ kafka-console-consumer.sh --topic test2 --from-beginning --bootstrap-server loca
 
 Observation : Values with same key is guaranteed to be in same partition, however multiple values of different keys can be in the same partition
 
+ 
 
-
-3. Partitioning using key with Key and Value Serializer 
+3.	Partitioning using key with Key and Value Serializer 
 
 Create a topic named test3 with 3 partitions
 
@@ -443,7 +443,7 @@ Another terminal execute command to consume messages
 
 kafka-console-consumer.sh --topic test3 --from-beginning --bootstrap-server localhost:9092 --property print.key=true  --property print.value=true --property print.partition=true
 
-4. Custom Partitioner
+4.	Custom Partitioner
 
 Create a topic named test4 with 3 partitions
 
@@ -477,12 +477,12 @@ Step 2: Create 3 brokers named server, server1 and server2
 
 Update the following details in 3 properties file named server.properties, server1.proerties, server2.properties in the config file
 
-ï Broker ids = 0,1,2
+‚Ä¢	Broker ids = 0,1,2
 
-ï Port number using LISTENERS = 9092,9093,9094
+‚Ä¢	Port number using LISTENERS = 9092,9093,9094
 
-ï Logs file directory in tmp folder = kafka_logs, kafka1_logs, kafka2_logs
-
+‚Ä¢	Logs file directory in tmp folder = kafka_logs, kafka1_logs, kafka2_logs
+ 
 With ZooKeeper on, do the following
 
 
@@ -512,7 +512,8 @@ Note : Use --batch-size 1 for latest version of Kafka
 Note down all the topics from all partitions and all the servers and check in the logs
 
 
-TopicPartitionServer
+Topic	Partition	Server
+
 First thing
 
 This is second message
@@ -536,10 +537,10 @@ Observation 2: Only data available on 2nd server might not be shown. This can be
 Lab 11 : Multi-node Cluster with Replication Factor
 
 Step 1: Start all the 3 kafka servers in 3 separate terminals
-
+ 
 
 ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server.properties ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server1.properties ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server2.properties
-
+ 
 
 Step 2: Create a topic named demo_testing2 with 7 partitions This topic will be created in multiple partitions across 3 brokers
 
@@ -596,7 +597,11 @@ WARN [Producer clientId=console-producer] Connection to node 2 (DESKTOP-8M3M600.
 
 
 ACL in Kafka
-Adding ACLs ñ 
+Add given lines to server.properties
+authorizer.class.name=kafka.security.authorizer.AclAuthorizer
+allow.everyone.if.no.acl.found=true
+
+Adding ACLs ‚Äì 
 
 
 ~/kafka/bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:Bob --allow-principal User:Alice --allow-host 198.51.100.0 --allow-host 198.51.100.1 --operation Read --operation Write --topic test-acl
@@ -613,23 +618,23 @@ Reference : Apache Kafka
 Kafka Connect
 
 Lab 1 :  Basic Kafka connector to import data from a file to Kafka topic and export data from Kafka topic to a file
-Configuration files (/kafka/config) required ñ
-* connect-file-source.properties
-* connect-file-sink.properties
-* connect-standalone.properties
+Configuration files (/kafka/config) required ‚Äì
+‚Ä¢	connect-file-source.properties
+‚Ä¢	connect-file-sink.properties
+‚Ä¢	connect-standalone.properties
 Connectors are available in .jar files - /kafka/libs
 For this we will require connector as, connect-file-3.4.1.jar
-Step 1 : Specify path of required connector in ëconnect-standalone.propertiesí using parameter, plugin.path
+Step 1 : Specify path of required connector in ‚Äòconnect-standalone.properties‚Äô using parameter, plugin.path
 It should look like,
 plugin.path=/home/pak/kafka/libs/connect-file-3.4.1.jar
-Step 2: Create test.txt file as source file and provide its path in ëconnect-file-source.propertiesí file. It should look like,
+Step 2: Create test.txt file as source file and provide its path in ‚Äòconnect-file-source.properties‚Äô file. It should look like,
 file=/home/pak/kafka/bin/test.txt
-Step 3: Specify path and name of sink file, which will be automatically created in ëconnect-file-sink.propertiesí file
+Step 3: Specify path and name of sink file, which will be automatically created in ‚Äòconnect-file-sink.properties‚Äô file
 file=/home/pak/kafka/bin/test.sink.txt
 Step 4: Execute command
 ~/kafka/bin/connect-standalone.sh ~/kafka/config/connect-standalone.properties ~/kafka/config/connect-file-source.properties ~/kafka/config/connect-file-sink.properties
 
-Note : topic specified in ëconnect-file-source.propertiesí will be automatically created. Whenever, source file is newly created or executing a command mentioned in step 4 again after shutting down, delete file ë/tmp/connect.offsetí. This file tracks the offset so that connectors can resume from the last one. 
+Note : topic specified in ‚Äòconnect-file-source.properties‚Äô will be automatically created. Whenever, source file is newly created or executing a command mentioned in step 4 again after shutting down, delete file ‚Äò/tmp/connect.offset‚Äô. This file tracks the offset so that connectors can resume from the last one. 
 
 Lab 2: Use Kafka connect to store data into database (PostgreSQL)
 Connector kafka-connect-jdbc-10.7.2.jar (kafka/libs) will be used for connection. It comes along with Kafka installation
@@ -638,26 +643,26 @@ sudo apt install postgresql
 Check PostgreSQL clusters running on system
 pak@SRV1:/mnt/c/WINDOWS/system32$ pg_lsclusters
 
-
+ 
 If cluster is down, then start one of the cluster executing given command
 pak@SRV1:/mnt/c/WINDOWS/system32$ sudo pg_ctlcluster 12 main start
 
-
+ 
 Here 12 is cluster number.
 PostgreSQL prompt
 pak@SRV1:/mnt/c/WINDOWS/system32$ sudo -u postgres psql
 
 PostgreSQL commands
-* Get list of databases
-       postgres-# \l
-* Change database
-       postgres-# \c main
-* Get list of tables
-       main-# \dt
-* Create table
-       main=# create table customer (cid integer primary key, cname varchar);
+‚Ä¢	Get list of databases
+postgres-# \l
+‚Ä¢	Change database
+postgres-# \c main
+‚Ä¢	Get list of tables
+main-# \dt
+‚Ä¢	Create table
+main=# create table customer (cid integer primary key, cname varchar);
 
-Step 2 : Create new configuration file namely, ëconnect-jdbc-sink.propertiesí, inside folder ëkafka/configí. Specify given configuration values in created file.
+Step 2 : Create new configuration file namely, ‚Äòconnect-jdbc-sink.properties‚Äô, inside folder ‚Äòkafka/config‚Äô. Specify given configuration values in created file.
 name=jdbc-sink-connector
 connector.class=io.confluent.connect.jdbc.JdbcSinkConnector
 connection.url=jdbc:postgresql://localhost:5432/main
@@ -677,7 +682,7 @@ table.name.format=customer
 insert.mode.databaselevel=true
 
 Step 3: Property inside file connect-standalone.properties should look like,
-       plugin.path=/home/pak/kafka/libs
+plugin.path=/home/pak/kafka/libs   Done
 Step 4: Execute given command for connector execution
 ~/kafka/bin/connect-standalone.sh ~/kafka/config/connect-standalone.properties ~/kafka/config/connect-jdbc-sink.properties
 
@@ -686,11 +691,11 @@ kafka-console-producer.sh --topic test-jdbc --bootstrap-server localhost:9092
 
 Step 6: Give given json value as input to producer.
 {"schema": 
-      {"type": "struct",
-      "fields": [  
-      {"type": "int32","optional": false,"field": "cid"}, 
-      {"type": "string","optional": false,"field": "cname"}
-      ],
+{"type": "struct",
+"fields": [  
+{"type": "int32","optional": false,"field": "cid"}, 
+{"type": "string","optional": false,"field": "cname"}
+],
 "optional": false,"name": "Person"},
 "payload": {"cid": 16,"cname": "Raghu Sharma"}
 }
@@ -724,6 +729,9 @@ Notes : JsonConverter with schemas.enable requires "schema" and "payload" fields
 Kafka Streams
 
 Kafka Streams require installation of Maven and Java
+Command for installing Java 8
+
+sudo apt-get install openjdk-8-jdk
 
 Installation of Maven
 
@@ -758,7 +766,13 @@ ls -l java
 
 ls -l /etc/alternatives/java
 
+Or
 
+Java 8 can be found at the location
+
+cd /usr/lib/jvm
+
+In most systems, path for Java 8 installation is : /usr/lib/jvm/ java-8-openjdk-amd64
 
 sudo chmod +x /etc/profile.d/maven.sh
 
@@ -766,7 +780,7 @@ source /etc/profile.d/maven.sh
 
 Check Apache Maven version
 
-mvn ñ-version
+mvn ‚Äì-version
 
 It shows successful installation of Maven on system
 
@@ -785,7 +799,7 @@ Step 2: Execute command to setup streaming project using Kafka Streams Maven Arc
 
 mvn archetype:generate     -DarchetypeGroupId=org.apache.kafka     -DarchetypeArtifactId=streams-quickstart-java     -DarchetypeVersion=3.5.0     -DgroupId=streams.examples     -DartifactId=streams.examples     -Dversion=0.1     -Dpackage=myapps
 
-Step 3: Go to directory ëstreams.examplesí. 
+Step 3: Go to directory ‚Äòstreams.examples‚Äô. 
 
 cd streams.examples/
 Open pom.xml file
@@ -866,8 +880,7 @@ kafka-console-producer.sh --topic streams-plaintext-input --bootstrap-server loc
 
 Step 8: Open another terminal to start consumer
 
-kafka-console-consumer.sh --topic streams-pipe-output --from-beginning --bootstrap-ser
-ver localhost:9092
+kafka-console-consumer.sh --topic streams-pipe-output --from-beginning --bootstrap-server localhost:9092
 
 Check data sent by producer is received by consumer or not. This will happen through streaming pipeline written in Pipe.java
 
@@ -877,9 +890,7 @@ How to Install Apache Maven on Ubuntu 22.04 (linuxhint.com)
 
 Lab 2: 
 
+ 
 
-
-
-
-
+ 
 
