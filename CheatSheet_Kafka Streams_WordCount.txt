@@ -1,0 +1,31 @@
+For Kafka Stream WordCount Program
+--------------------------------
+
+# Start Zookeeper
+~/kafka/bin/zookeeper-server-start.sh ~/kafka/config/zookeeper.properties
+
+
+#Start Kafka server
+~/kafka/bin/kafka-server-start.sh ~/kafka/config/server.properties
+
+
+# Create input topic
+
+~/kafka/bin/kafka-topics.sh --topic streams-plaintext-input --bootstrap-server localhost:9092 --create
+
+
+# Create output topic
+~/kafka/bin/kafka-topics.sh --topic streams-wordcount-output --bootstrap-server localhost:9092 --create
+
+
+# Execute Worcount program in one terminal
+~/kafka/bin/kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
+
+
+
+#Start producer in second terminal with topic as 'streams-plaintext-input'
+~/kafka/bin/kafka-console-producer.sh --topic streams-plaintext-input --bootstrap-server localhost:9092
+
+
+#Start consumer in third terminal
+ ~/kafka/bin/kafka-console-consumer.sh --topic streams-wordcount-output --from-beginning --bootstrap-server localhost:9092 --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
